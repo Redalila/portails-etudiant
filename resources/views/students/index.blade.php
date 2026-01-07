@@ -3,10 +3,12 @@
 @section('content')
 <div class="card card-primary">
     <div class="card-header">
-        <h3 class="card-title">
+        <h2 class="card-title">
             <i class="fa-solid fa-list"></i>
             La liste des etudiants
-        </h3>
+        </h2>
+        
+        
     </div>
 
     <div class="card-body">
