@@ -50,3 +50,17 @@ jobs:
 
       - name: Run tests
         run: php artisan test
+
+      - name: Run PHPStan
+        run: vendor/bin/phpstan analyse
+
+      - name: Run PHPUnit tests
+        run: php artisan test --coverage-clover=coverage.xml
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@v2
+        with:
+          projectBaseDir: .
+          organization: redalia
+          projectKey: redalia_portails-etudiant
+          token: ${{ secrets.SONAR_TOKEN }}
