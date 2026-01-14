@@ -39,7 +39,7 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL') . '/storage',
+            'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
             'throw' => false,
         ],
@@ -47,7 +47,7 @@ return [
         'images' => [
             'driver' => 'local',
             'root' => storage_path('app/public/images'),
-            'url' => env('APP_URL') . '/images',
+            'url' => env('APP_URL').'/images',
             'visibility' => 'public',
             'throw' => false,
         ],
@@ -55,7 +55,7 @@ return [
         'students' => [
             'driver' => 'local',
             'root' => storage_path('app/public/images/students'),
-            'url' => env('APP_URL') . '/images/students',
+            'url' => env('APP_URL').'/images/students',
             'visibility' => 'public',
             'throw' => false,
         ],
@@ -63,7 +63,7 @@ return [
         'admins' => [
             'driver' => 'local',
             'root' => storage_path('app/public/images/admins'),
-            'url' => env('APP_URL') . '/images/admins',
+            'url' => env('APP_URL').'/images/admins',
             'visibility' => 'public',
             'throw' => false,
         ],
@@ -71,7 +71,7 @@ return [
         'reports' => [
             'driver' => 'local',
             'root' => storage_path('app/public/images/reports'),
-            'url' => env('APP_URL') . '/images/reports',
+            'url' => env('APP_URL').'/images/reports',
             'visibility' => 'public',
             'throw' => false,
         ],

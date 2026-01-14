@@ -42,20 +42,20 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        $credentials  = $request->validate([
+        $credentials = $request->validate([
             'cin' => 'required|numeric',
-            'password' => 'required'
+            'password' => 'required',
         ]);
 
         if (Auth::guard('students')->attempt($credentials)) {
             return redirect()->route('meet.matieres.index');
-        } else if (Auth::guard('admins')->attempt($credentials)) {
+        } elseif (Auth::guard('admins')->attempt($credentials)) {
             return redirect()->route('statistic');
-        } else if (Auth::guard('enseignants')->attempt($credentials)) {
+        } elseif (Auth::guard('enseignants')->attempt($credentials)) {
             return redirect()->route('rapports');
         } else {
             return redirect()->route('login')
-                ->with('error', "Le CIN ou le mot de passe est incorrect.");
+                ->with('error', 'Le CIN ou le mot de passe est incorrect.');
         }
     }
 }

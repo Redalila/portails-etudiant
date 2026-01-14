@@ -20,12 +20,13 @@ class EnseignantController extends Controller
     {
         if ($request->ajax()) {
             $enseignants = Enseignant::all();
+
             return datatables()->of($enseignants)
                 ->editColumn('created_at', function ($row) {
-                    return $row->created_at->format("d/m/Y");
+                    return $row->created_at->format('d/m/Y');
                 })
                 ->editColumn('updated_at', function ($row) {
-                    return $row->updated_at->format("d/m/Y");
+                    return $row->updated_at->format('d/m/Y');
                 })
                 ->addColumn('department', function ($row) {
                     return $row->department->name;
@@ -33,18 +34,20 @@ class EnseignantController extends Controller
                 ->addColumn('actions', function ($row) {
                     $actions = '';
                     $actions .= "
-                    <form id='{$row->id}' class='d-inline-block' onsubmit='event.preventDefault();deleteItem({$row->id})' method='post' action=" . route('enseignants.destroy', $row->id) . ">
+                    <form id='{$row->id}' class='d-inline-block' onsubmit='event.preventDefault();deleteItem({$row->id})' method='post' action=".route('enseignants.destroy', $row->id).">
                     <input name='_method' value='DELETE' type='hidden'>
-                    " . csrf_field() . "
+                    ".csrf_field()."
                     <button class='btn btn-sm btn-danger'>
                         <i class='fa-solid fa-trash'></i> Supprimer
                     </button>
                     </form>";
+
                     return $actions;
                 })
                 ->rawColumns(['id', 'first_name', 'last_name', 'department', 'actions'])
                 ->toJson();
         }
+
         return view('enseignants.index');
     }
 
@@ -56,6 +59,7 @@ class EnseignantController extends Controller
     public function create()
     {
         $departments = Department::all();
+
         return view('enseignants.create', ['departments' => $departments]);
     }
 
@@ -84,7 +88,6 @@ class EnseignantController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Enseignant  $enseignant
      * @return \Illuminate\Http\Response
      */
     public function show(Enseignant $enseignant)
@@ -95,28 +98,20 @@ class EnseignantController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Enseignant  $enseignant
      * @return \Illuminate\Http\Response
      */
-    public function edit(Enseignant $enseignant)
-    {
-    }
+    public function edit(Enseignant $enseignant) {}
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Enseignant  $enseignant
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Enseignant $enseignant)
-    {
-    }
+    public function update(Request $request, Enseignant $enseignant) {}
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Enseignant  $enseignant
      * @return \Illuminate\Http\Response
      */
     public function destroy(Enseignant $enseignant)

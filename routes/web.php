@@ -5,6 +5,9 @@ use App\Http\Controllers\ClasseController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\Enseignant\RapportController;
 use App\Http\Controllers\EnseignantController;
+use App\Http\Controllers\FileController;
+use App\Http\Controllers\Guest\NewsController as GuestNewsController;
+use App\Http\Controllers\MatierController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\Settings\DateDepotRapportController;
 use App\Http\Controllers\SpecialiteController;
@@ -12,11 +15,8 @@ use App\Http\Controllers\StatisticController;
 use App\Http\Controllers\Student\AttendanceCertificate;
 use App\Http\Controllers\Student\DepotRapportController;
 use App\Http\Controllers\StudentController;
-use App\Http\Controllers\User\UpdatePasswordController;
-use App\Http\Controllers\MatierController;
-use App\Http\Controllers\FileController;
-use App\Http\Controllers\Guest\NewsController as GuestNewsController;
 use App\Http\Controllers\StudentMatiereController;
+use App\Http\Controllers\User\UpdatePasswordController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,7 +32,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [GuestNewsController::class, 'index'])->name('index');
 Route::get('/actualite/{id}', [GuestNewsController::class, 'show'])->name('guest.news');
-
 
 Route::group(['middleware' => 'auth:admins'], function () {
     Route::get('/statistic', [StatisticController::class, 'index'])->name('statistic');
@@ -60,7 +59,6 @@ Route::group(['middleware' => 'auth:students'], function () {
 });
 
 Auth::routes();
-
 
 Route::resource('password', UpdatePasswordController::class)->only(['index', 'store']);
 

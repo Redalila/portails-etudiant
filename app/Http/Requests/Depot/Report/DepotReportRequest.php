@@ -25,7 +25,7 @@ class DepotReportRequest extends FormRequest
     {
         return [
             'type' => 'required|in:initiation,perfectionnement',
-            'file' => 'required|file|mimes:pdf'
+            'file' => 'required|file|mimes:pdf',
         ];
     }
 }

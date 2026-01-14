@@ -18,7 +18,7 @@ class NewsFactory extends Factory
     {
         return [
             'title' => $this->faker->realText(100),
-            'content' => $this->faker->paragraph(10)
+            'content' => $this->faker->paragraph(10),
         ];
     }
 }

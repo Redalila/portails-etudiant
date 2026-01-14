@@ -3,11 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Storage;
 
-class Enseignant  extends Authenticatable
+class Enseignant extends Authenticatable
 {
     use HasFactory;
 
@@ -18,6 +17,7 @@ class Enseignant  extends Authenticatable
         if ($value == null) {
             return Storage::disk('students')->url('default.png');
         }
+
         return Storage::disk('students')->url($value);
     }
 

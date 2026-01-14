@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Admin;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -20,7 +19,7 @@ class AdminTableSeeder extends Seeder
             'cin' => 11000000,
             'first_name' => 'reda',
             'last_name' => 'reda',
-            'password' =>  Hash::make(123456789)
+            'password' => Hash::make(123456789),
         ]);
     }
 }

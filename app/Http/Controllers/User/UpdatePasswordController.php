@@ -12,7 +12,7 @@ class UpdatePasswordController extends Controller
 {
     public function index(Request $request)
     {
-        abort_if(!Auth::guard('admins')->check() && !Auth::guard('students')->check() && !Auth::guard('enseignants')->check(), 404);
+        abort_if(! Auth::guard('admins')->check() && ! Auth::guard('students')->check() && ! Auth::guard('enseignants')->check(), 404);
 
         return view('password');
     }
@@ -21,7 +21,7 @@ class UpdatePasswordController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'current_password' => 'required',
-            'password' => 'required|min:6|confirmed'
+            'password' => 'required|min:6|confirmed',
         ]);
 
         // check password
@@ -37,7 +37,7 @@ class UpdatePasswordController extends Controller
         }
 
         $validator->after(function ($validator) use ($current_password_valid) {
-            if (!$current_password_valid) {
+            if (! $current_password_valid) {
                 $validator->errors()->add('current_password', 'Le mot de passe actuel est erroné');
             }
         });

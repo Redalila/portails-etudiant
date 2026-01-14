@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Classe;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class ClasseTableSeeder extends Seeder
@@ -66,19 +65,19 @@ class ClasseTableSeeder extends Seeder
         Classe::create([
             'specialite_id' => 2,
             'number' => 2,
-            'level' => 3
+            'level' => 3,
         ]);
 
         Classe::create([
             'specialite_id' => 3,
             'number' => 1,
-            'level' => 3
+            'level' => 3,
         ]);
 
         Classe::create([
             'specialite_id' => 4,
             'number' => 1,
-            'level' => 3
+            'level' => 3,
         ]);
     }
 }

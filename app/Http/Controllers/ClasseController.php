@@ -19,12 +19,13 @@ class ClasseController extends Controller
     {
         if ($request->ajax()) {
             $classes = Classe::with('specialite.department')->get();
+
             return datatables()->of($classes)
                 ->editColumn('level', function ($row) {
                     return "{$row->level} année";
                 })
                 ->editColumn('created_at', function ($row) {
-                    return $row->created_at->format("d/m/Y");
+                    return $row->created_at->format('d/m/Y');
                 })
                 // ->editColumn('updated_at', function ($row) {
                 //     return $row->updated_at->format("d/m/Y");
@@ -35,23 +36,25 @@ class ClasseController extends Controller
                 ->addColumn('actions', function ($row) {
                     $actions = '';
                     $actions .= "
-                    <a class='btn btn-sm btn-success mr-1' href=" . route('classe.edit', $row->id) . ">
+                    <a class='btn btn-sm btn-success mr-1' href=".route('classe.edit', $row->id).">
                         <i class='fa-solid fa-pen-to-square'></i>
                             Modifier
                     </a>";
                     $actions .= "
-                    <form id='{$row->id}' class='d-inline-block' onsubmit='event.preventDefault();deleteItem({$row->id})' method='post' action=" . route('classe.destroy', $row->id) . ">
+                    <form id='{$row->id}' class='d-inline-block' onsubmit='event.preventDefault();deleteItem({$row->id})' method='post' action=".route('classe.destroy', $row->id).">
                     <input name='_method' value='DELETE' type='hidden'>
-                    " . csrf_field() . "
+                    ".csrf_field()."
                     <button class='btn btn-sm btn-danger'>
                         <i class='fa-solid fa-trash'></i> Supprimer
                     </button>
                     </form>";
+
                     return $actions;
                 })
                 ->rawColumns(['id', 'name', 'actions'])
                 ->toJson();
         }
+
         return view('classses.index');
     }
 
@@ -63,6 +66,7 @@ class ClasseController extends Controller
     public function create()
     {
         $specialites = Specialite::with('department')->get();
+
         return view('classses.create', ['specialites' => $specialites]);
     }
 
@@ -90,6 +94,7 @@ class ClasseController extends Controller
     {
         // return $classe->specialite_id;
         $specialites = Specialite::with('department')->get();
+
         return view('classses.edit', ['classe' => $classe, 'specialites' => $specialites]);
     }
 

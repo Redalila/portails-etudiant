@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Http;
 
 class NewsController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth:admins');
@@ -37,24 +36,23 @@ class NewsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $request->validate([
             'title' => 'required',
-            'content' => 'required'
+            'content' => 'required',
         ]);
 
         if ($request->notification) {
             Http::withHeaders([
-                'Authorization' => 'Basic ' . env("ONESIGNAL_APP_KEY")
+                'Authorization' => 'Basic '.env('ONESIGNAL_APP_KEY'),
             ])->post('https://onesignal.com/api/v1/notifications', [
-                'app_id' => env("ONESIGNAL_APP_ID"),
-                'included_segments' =>  ["Subscribed Users"],
-                'headings' => ["en" => $request->title],
-                'contents' => ["en" => strip_tags($request->content)],
+                'app_id' => env('ONESIGNAL_APP_ID'),
+                'included_segments' => ['Subscribed Users'],
+                'headings' => ['en' => $request->title],
+                'contents' => ['en' => strip_tags($request->content)],
             ]);
         }
 
@@ -67,17 +65,13 @@ class NewsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\News  $news
      * @return \Illuminate\Http\Response
      */
-    public function show(News $news)
-    {
-    }
+    public function show(News $news) {}
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\News  $news
      * @return \Illuminate\Http\Response
      */
     public function edit(News $news)
@@ -88,15 +82,13 @@ class NewsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\News  $news
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, News $news)
     {
         $request->validate([
             'title' => 'required',
-            'content' => 'required'
+            'content' => 'required',
         ]);
 
         $news->update(['title' => $request->title, 'content' => $request->content]);
@@ -108,12 +100,12 @@ class NewsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\News  $news
      * @return \Illuminate\Http\Response
      */
     public function destroy(News $news)
     {
         $news->delete();
+
         return redirect()->route('news.index')
             ->with('success', "L'actualité a été supprimée");
     }

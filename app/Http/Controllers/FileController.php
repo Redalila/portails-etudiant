@@ -1,9 +1,9 @@
 <?php
-  
+
 namespace App\Http\Controllers;
-   
+
 use Illuminate\Http\Request;
-  
+
 class FileController extends Controller
 {
     /**
@@ -15,7 +15,7 @@ class FileController extends Controller
     {
         return view('fileUpload');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -26,19 +26,19 @@ class FileController extends Controller
         $request->validate([
             'file' => 'required|mimes:pdf,docx|max:10240',
         ]);
-    
-        $fileName = time().'.'.$request->file->extension();  
-     
+
+        $fileName = time().'.'.$request->file->extension();
+
         $request->file->move(public_path('uploads'), $fileName);
-   
-        /*  
+
+        /*
             Write Code Here for
-            Store $fileName name in DATABASE from HERE 
+            Store $fileName name in DATABASE from HERE
         */
-     
+
         return back()
-            ->with('success','Document bien ajouté.')
+            ->with('success', 'Document bien ajouté.')
             ->with('file', $fileName);
-   
+
     }
 }

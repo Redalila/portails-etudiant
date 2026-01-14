@@ -21,12 +21,13 @@ class StudentController extends Controller
     {
         if ($request->ajax()) {
             $students = Student::all();
+
             return datatables()->of($students)
                 ->editColumn('created_at', function ($row) {
-                    return $row->created_at->format("d/m/Y");
+                    return $row->created_at->format('d/m/Y');
                 })
                 ->editColumn('updated_at', function ($row) {
-                    return $row->updated_at->format("d/m/Y");
+                    return $row->updated_at->format('d/m/Y');
                 })
                 ->addColumn('classe', function ($row) {
                     return $row->classe->name;
@@ -34,28 +35,30 @@ class StudentController extends Controller
                 ->addColumn('actions', function ($row) {
                     $actions = '';
                     $actions .= "
-                    <a class='btn btn-sm btn-primary mr-1' href=" . route('students.show', $row->id) . ">
+                    <a class='btn btn-sm btn-primary mr-1' href=".route('students.show', $row->id).">
                         <i class='fa-solid fa-eye'></i>
                         Détails
                     </a>";
                     $actions .= "
-                    <a class='btn btn-sm btn-success mr-1' href=" . route('students.edit', $row->id) . ">
+                    <a class='btn btn-sm btn-success mr-1' href=".route('students.edit', $row->id).">
                         <i class='fa-solid fa-pen-to-square'></i>
                             Modifier
                     </a>";
                     $actions .= "
-                    <form id='{$row->id}' class='d-inline-block' onsubmit='event.preventDefault();deleteItem({$row->id})' method='post' action=" . route('students.destroy', $row->id) . ">
+                    <form id='{$row->id}' class='d-inline-block' onsubmit='event.preventDefault();deleteItem({$row->id})' method='post' action=".route('students.destroy', $row->id).">
                     <input name='_method' value='DELETE' type='hidden'>
-                    " . csrf_field() . "
+                    ".csrf_field()."
                     <button class='btn btn-sm btn-danger'>
                         <i class='fa-solid fa-trash'></i> Supprimer
                     </button>
                     </form>";
+
                     return $actions;
                 })
                 ->rawColumns(['id', 'first_name', 'last_name', 'classe', 'actions'])
                 ->toJson();
         }
+
         return view('students.index');
     }
 
@@ -67,6 +70,7 @@ class StudentController extends Controller
     public function create()
     {
         $classes = Classe::all();
+
         return view('students.create', ['classes' => $classes]);
     }
 
@@ -106,6 +110,7 @@ class StudentController extends Controller
     public function edit(Student $student)
     {
         $classes = Classe::all();
+
         return view('students.edit', ['classes' => $classes, 'student' => $student]);
     }
 

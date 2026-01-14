@@ -22,33 +22,36 @@ class SpecialiteController extends Controller
                 ->when($request->department_id, function ($query) use ($request) {
                     return $query->where('department_id', $request->department_id);
                 })->get();
+
             return datatables()->of($specialites)
                 ->editColumn('created_at', function ($row) {
-                    return $row->created_at->format("d/m/Y");
+                    return $row->created_at->format('d/m/Y');
                 })
                 ->editColumn('updated_at', function ($row) {
-                    return $row->updated_at->format("d/m/Y");
+                    return $row->updated_at->format('d/m/Y');
                 })
                 ->addColumn('actions', function ($row) {
                     $actions = '';
                     $actions .= "
-                    <a class='btn btn-sm btn-success mr-1' href=" . route('specialite.edit', $row->id) . ">
+                    <a class='btn btn-sm btn-success mr-1' href=".route('specialite.edit', $row->id).">
                         <i class='fa-solid fa-pen-to-square'></i>
                             Modifier
                     </a>";
                     $actions .= "
-                    <form id='{$row->id}' class='d-inline-block' onsubmit='event.preventDefault();deleteItem({$row->id})' method='post' action=" . route('specialite.destroy', $row->id) . ">
+                    <form id='{$row->id}' class='d-inline-block' onsubmit='event.preventDefault();deleteItem({$row->id})' method='post' action=".route('specialite.destroy', $row->id).">
                     <input name='_method' value='DELETE' type='hidden'>
-                    " . csrf_field() . "
+                    ".csrf_field()."
                     <button class='btn btn-sm btn-danger'>
                         <i class='fa-solid fa-trash'></i> Supprimer
                     </button>
                     </form>";
+
                     return $actions;
                 })
                 ->rawColumns(['id', 'name', 'actions'])
                 ->toJson();
         }
+
         return view('specialites.index');
     }
 
@@ -60,6 +63,7 @@ class SpecialiteController extends Controller
     public function create()
     {
         $departements = Department::all();
+
         return view('specialites.create', ['departements' => $departements]);
     }
 
@@ -85,6 +89,7 @@ class SpecialiteController extends Controller
     public function edit(Specialite $specialite)
     {
         $departements = Department::all();
+
         return view('specialites.edit', compact('specialite', 'departements'));
     }
 

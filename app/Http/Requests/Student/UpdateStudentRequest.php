@@ -38,7 +38,7 @@ class UpdateStudentRequest extends FormRequest
     {
         return [
             'first_name' => 'nom',
-            'last_name' => 'prenom'
+            'last_name' => 'prenom',
         ];
     }
 }

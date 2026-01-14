@@ -42,16 +42,16 @@ return [
         ],
         'students' => [
             'driver' => 'session',
-            'provider' => 'students'
+            'provider' => 'students',
         ],
         'admins' => [
             'driver' => 'session',
-            'provider' => 'admins'
+            'provider' => 'admins',
         ],
         'enseignants' => [
             'driver' => 'session',
-            'provider' => 'enseignants'
-        ]
+            'provider' => 'enseignants',
+        ],
     ],
 
     /*
@@ -87,7 +87,7 @@ return [
         'enseignants' => [
             'driver' => 'eloquent',
             'model' => App\Models\Enseignant::class,
-        ]
+        ],
     ],
 
     /*

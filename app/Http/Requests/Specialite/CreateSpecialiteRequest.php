@@ -26,7 +26,7 @@ class CreateSpecialiteRequest extends FormRequest
         return [
             'name' => 'required',
             'department_id' => 'required|integer|exists:departments,id',
-            'prefix' => 'required|min:1|max:10'
+            'prefix' => 'required|min:1|max:10',
         ];
     }
 }

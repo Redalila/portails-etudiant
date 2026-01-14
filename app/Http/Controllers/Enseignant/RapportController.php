@@ -13,30 +13,35 @@ class RapportController extends Controller
     {
         if ($request->ajax()) {
             $reports = Report::with('student')->get();
+
             return datatables()->of($reports)
                 ->editColumn('created_at', function ($row) {
-                    return $row->created_at->format("d/m/Y");
+                    return $row->created_at->format('d/m/Y');
                 })
                 ->editColumn('student.name', function ($row) {
-                    return  $row->student->first_name . " " . $row->student->last_name;
+                    return $row->student->first_name.' '.$row->student->last_name;
                 })
                 ->addColumn('actions', function ($row) {
                     $actions = '';
                     $actions .= "
-                    <a class='btn btn-sm btn-primary mr-1' href=" . route('rapports.show', $row->id) . ">
+                    <a class='btn btn-sm btn-primary mr-1' href=".route('rapports.show', $row->id).">
                         <i class='fa-solid fa-eye'></i>
                             Affichier
                     </a>";
+
                     return $actions;
                 })
                 ->rawColumns(['id', 'name', 'actions'])
                 ->toJson();
         }
-        return view("rapports");
+
+        return view('rapports');
     }
+
     public function show($id)
     {
         $report = Report::findOrFail($id);
+
         return Storage::disk('reports')->download($report->path);
     }
 }

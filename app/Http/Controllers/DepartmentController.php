@@ -18,32 +18,35 @@ class DepartmentController extends Controller
     {
         if ($request->ajax()) {
             $departments = Department::all();
+
             return datatables()->of($departments)
                 ->editColumn('created_at', function ($row) {
-                    return $row->created_at->format("d/m/Y");
+                    return $row->created_at->format('d/m/Y');
                 })
                 ->addColumn('actions', function ($row) {
                     $actions = '';
-                    $actions .= "<a class='btn btn-sm btn-secondary mr-1' href=" . route('specialite.index') . "?department_id={$row->id}><i class='fas fa-copy'></i> Les Specialités</a>";
+                    $actions .= "<a class='btn btn-sm btn-secondary mr-1' href=".route('specialite.index')."?department_id={$row->id}><i class='fas fa-copy'></i> Les Specialités</a>";
                     // $actions .= "<a class='btn btn-sm btn-secondary mr-1' href=" . route('classe.index') . "?department_id={$row->id}><i class='fa-solid fa-users'></i> Les Classes</a>";
                     $actions .= "
-                    <a class='btn btn-sm btn-success mr-1' href=" . route('department.edit', $row->id) . ">
+                    <a class='btn btn-sm btn-success mr-1' href=".route('department.edit', $row->id).">
                         <i class='fa-solid fa-pen-to-square'></i>
                             Modifier
                     </a>";
                     $actions .= "
-                    <form id='{$row->id}' class='d-inline-block' onsubmit='event.preventDefault();deleteItem({$row->id})' method='post' action=" . route('department.destroy', $row->id) . ">
+                    <form id='{$row->id}' class='d-inline-block' onsubmit='event.preventDefault();deleteItem({$row->id})' method='post' action=".route('department.destroy', $row->id).">
                     <input name='_method' value='DELETE' type='hidden'>
-                    " . csrf_field() . "
+                    ".csrf_field()."
                     <button class='btn btn-sm btn-danger mr-1'>
                         <i class='fa-solid fa-trash'></i> Supprimer
                     </button>
                     </form>";
+
                     return $actions;
                 })
                 ->rawColumns(['id', 'name', 'actions'])
                 ->toJson();
         }
+
         return view('departments.index');
     }
 

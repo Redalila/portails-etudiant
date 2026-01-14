@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Specialite;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class SpecialiteTableSeeder extends Seeder
@@ -18,25 +17,25 @@ class SpecialiteTableSeeder extends Seeder
         Specialite::create([
             'department_id' => 1,
             'name' => 'Tronc commun',
-            'prefix' => 'TI'
+            'prefix' => 'TI',
         ]);
 
         Specialite::create([
             'department_id' => 1,
             'name' => 'Développement des systèmes d’information',
-            'prefix' => 'DSI'
+            'prefix' => 'DSI',
         ]);
 
         Specialite::create([
             'department_id' => 1,
             'name' => 'Réseaux et services informatiques',
-            'prefix' => 'RES'
+            'prefix' => 'RES',
         ]);
 
         Specialite::create([
             'department_id' => 1,
             'name' => 'Systèmes embarqués et mobiles',
-            'prefix' => 'SEM'
+            'prefix' => 'SEM',
         ]);
     }
 }

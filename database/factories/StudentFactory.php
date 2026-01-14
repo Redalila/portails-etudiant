@@ -19,6 +19,7 @@ class StudentFactory extends Factory
     public function definition()
     {
         $cin = $this->faker->numberBetween(11400000, 11500000);
+
         return [
             'cin' => $cin,
             'classe_id' => Classe::all()->random()->id,
@@ -27,7 +28,7 @@ class StudentFactory extends Factory
             'birthday' => $this->faker->date(),
             'address' => $this->faker->state(),
             'phone' => $this->faker->phoneNumber(),
-            'password' => Hash::make($cin)
+            'password' => Hash::make($cin),
         ];
     }
 }

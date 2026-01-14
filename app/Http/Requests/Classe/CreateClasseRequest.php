@@ -26,10 +26,9 @@ class CreateClasseRequest extends FormRequest
         return [
             'specialite_id' => 'required|numeric|exists:specialites,id',
             'number' => 'required|numeric',
-            'level' => 'required|numeric|min:1|max:5'
+            'level' => 'required|numeric|min:1|max:5',
         ];
     }
-
 
     public function attributes()
     {
