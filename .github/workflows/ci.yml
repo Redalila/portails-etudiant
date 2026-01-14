@@ -61,6 +61,6 @@ jobs:
         uses: SonarSource/sonarcloud-github-action@v2
         with:
           projectBaseDir: .
-          organization: redalia
-          projectKey: redalia_portails-etudiant
-          token: ${{ secrets.SONAR_TOKEN }}
+          organization: Redalila
+          projectKey: Redalila_portails-etudiant
+          token: f49756ec5315a7f18a262448940d6295a93affe5

@@ -1,7 +1,7 @@
 # Badges de qualité
 
-![CI](https://github.com/Redalila/PortailEtudiant/actions/workflows/ci.yml/badge.svg)
-[![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=redalia_portails-etudiant&metric=alert_status)](https://sonarcloud.io/dashboard?id=redalia_portails-etudiant)
+![CI](https://github.com/Redalila/portails-etudiant/actions/workflows/ci.yml/badge.svg)
+[![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=Redalila_portails-etudiant&metric=alert_status)](https://sonarcloud.io/dashboard?id=Redalila_portails-etudiant)
 
 
 # Objectif
