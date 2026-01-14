@@ -1,3 +1,9 @@
+# Badges de qualité
+
+![CI](https://github.com/Redalila/portails-etudiant/actions/workflows/ci.yml/badge.svg)
+[![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=Redalila_portails-etudiant&metric=alert_status)](https://sonarcloud.io/dashboard?id=Redalila_portails-etudiant)
+
+
 # Objectif
 Nous avons appliqué GitFlow simplifié avec des branches par fonctionnalité et des Pull Requests pour chaque fusion vers la branche main.
 

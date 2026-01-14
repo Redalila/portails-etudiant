@@ -1,0 +1,8 @@
+includes:
+    - vendor/nunomaduro/larastan/extension.neon
+
+parameters:
+    level: 1         # Niveau de vérification (0 → 8)
+    paths:
+        - app
+        - database
