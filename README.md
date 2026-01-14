@@ -1,12 +1,11 @@
-# A propos
+# Objectif
+Nous avons appliqué GitFlow simplifié avec des branches par fonctionnalité et des Pull Requests pour chaque fusion vers la branche main.
+
+# A propos de projet
 
 Le projet Portails Étudiant est une application web qui fournit une plateforme permettant aux étudiants, aux enseignants et aux administrateurs d'interagir entre eux. L'objectif principal de ce projet est de créer un hub central pour les étudiants, les enseignants et les administrateurs afin d'accéder aux informations sur l'université, leurs cours et leur progression académique.
 
 -   Projet réalisé en 2022
-
-# Video Demo :
-
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/D-1NrQaPlzc/0.jpg)](https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERD-1NrQaPlzcE)
 
 # Captures D'ecran
 
@@ -16,21 +15,6 @@ login
 </div>
 
 ## Espace etudiant
-
-<div align="center">
-<img src="screenshots/cours.png">
-joindre un cours en ligne "Developpement web coté Serveur"
-</div>
-
-<div align="center">
-<img src="screenshots/demande_attestation.png">
-Demander une attestation de présence avec un QR code
-</div>
-
-<div align="center">
-<img src="screenshots/attestation.png">
-attestation de présence avec un QR code
-</div>
 
 <div align="center">
 <img src="screenshots/deposer_rapport.png">
@@ -60,29 +44,11 @@ Gestion des classes
 </div>
 
 <div align="center">
-<img src="screenshots/ajouter_classe.png">
-Gestion des etudiants
-</div>
-
-<div align="center">
-<img src="screenshots/actualite.png">
-Ajouter une actualité (avec la possibilité d'envoyer une notification aux étudiants : push notification).
-</div>
-
-<div align="center">
 <img src="screenshots/liste_actualites.png">
 Modifier la date de dépôt des rapports
 </div>
 
-<div align="center">
-<img src="screenshots/modifier_mot_de_passe.png">
-Modifier le mot de passe
-</div>
 
-<div align="center">
-<img src="screenshots/liste_actualites.png">
-Page d'accueil : liste des actualités
-</div>
 # Cas d'utilisations :
 
 ## Administrateur
