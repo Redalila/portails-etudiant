@@ -6,6 +6,7 @@
         <h2 class="card-title">
             <i class="fa-solid fa-list"></i>
             La liste des etudiants
+            test
         </h2>
         
         
