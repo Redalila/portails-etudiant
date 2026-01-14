@@ -1,0 +1,52 @@
+name: CI - Laravel Portail Etudiant
+
+on:
+  push:
+    branches: [ "main", "feature/**" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  laravel-ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, pdo, pdo_mysql
+          coverage: xdebug
+
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist
+
+      - name: Copy .env
+        run: cp .env.example .env
+
+      - name: Generate app key
+        run: php artisan key:generate
+
+      - name: Create SQLite database
+        run: |
+          mkdir -p database
+          touch database/database.sqlite
+
+      - name: Configure database
+        run: |
+          sed -i 's/DB_CONNECTION=.*/DB_CONNECTION=sqlite/' .env
+          sed -i 's|DB_DATABASE=.*|DB_DATABASE=database/database.sqlite|' .env
+
+      - name: Run migrations
+        run: php artisan migrate --force
+
+      - name: Run database seeders
+        run: php artisan db:seed --force
+
+      - name: Run Laravel Pint
+        run: ./vendor/bin/pint --test
+
+      - name: Run tests
+        run: php artisan test
